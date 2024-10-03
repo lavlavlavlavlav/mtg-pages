@@ -4,18 +4,30 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable';
+import { Card, Role } from '@/constants';
 import { loadCardsFromBucket } from '@/helpers';
-
-const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
+import { useEffect, useState } from 'react';
+import Login from './Login';
 
 function App() {
-  console.log('abc ' + BUCKET_URL);
+  const [cards, setCards] = useState<Card[]>([]);
+  const [role, setRole] = useState(Role.Spectator);
 
-  loadCardsFromBucket(BUCKET_URL);
+  useEffect(() => {
+    loadCardsFromBucket().then((c) => {
+      setCards(c);
+    });
+  }, []);
+
+  if (cards.length == 0) return null;
 
   return (
     <>
-      <div className="h-screen w-full overflow-hidden">
+      <span className="text-white font-bold absolute top-6 right-[150px]">
+        Role: {role}
+      </span>
+      <Login setRole={setRole}></Login>
+      <div className="h-screen w-full overflow-hidden bg-zinc-900 text-white font-bold">
         <ResizablePanelGroup direction="horizontal" className="h-full w-full">
           <ResizablePanel defaultSize={15}>
             <div className="flex h-full items-center justify-center">

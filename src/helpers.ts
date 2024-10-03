@@ -1,10 +1,12 @@
-export function loadCardsFromBucket(url: string) {
-  console.log('##### ' + url);
+import { BUCKET_URL, Card } from './constants';
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data['cards']);
-    })
-    .catch((error) => console.error('Error:', error));
+export async function loadCardsFromBucket(): Promise<Card[]> {
+  try {
+    const response = await fetch(BUCKET_URL);
+    const data = await response.json();
+    return data['cards'];
+  } catch (error) {
+    console.error('Error:', error);
+    return []; // Return an empty array in case of error
+  }
 }
