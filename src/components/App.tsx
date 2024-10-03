@@ -4,8 +4,15 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable';
+import { loadCardsFromBucket } from '@/helpers';
+
+const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
 
 function App() {
+  console.log('abc ' + BUCKET_URL);
+
+  loadCardsFromBucket(BUCKET_URL);
+
   return (
     <>
       <div className="h-screen w-full overflow-hidden">
