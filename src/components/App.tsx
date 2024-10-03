@@ -8,6 +8,7 @@ import { Card, Role } from '@/constants';
 import { loadCardsFromBucket } from '@/helpers';
 import { useEffect, useState } from 'react';
 import Login from './Login';
+import Reload from './Reload';
 
 function App() {
   const [cards, setCards] = useState<Card[]>([]);
@@ -27,6 +28,7 @@ function App() {
         Role: {role}
       </span>
       <Login setRole={setRole}></Login>
+      <Reload setCards={setCards}></Reload>
       <div className="h-screen w-full overflow-hidden bg-zinc-900 text-white font-bold">
         <ResizablePanelGroup direction="horizontal" className="h-full w-full">
           <ResizablePanel defaultSize={15}>
