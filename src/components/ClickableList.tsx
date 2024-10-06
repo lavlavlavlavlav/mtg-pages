@@ -1,5 +1,4 @@
 import { Color } from '@/constants';
-import { useState } from 'react';
 
 export interface ListEntry {
   title: string;

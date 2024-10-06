@@ -8,9 +8,9 @@ import { Card, CardCategory, Color, Role, Status } from '@/constants';
 import { loadCardsFromBucket } from '@/helpers';
 import { useEffect, useState } from 'react';
 import Login from './Login';
-import Reload from './Reload';
+// import Reload from './Reload';
 import { CustomSelect } from './CustomSelect';
-import { ClickableList, ListEntry } from './ClickableList';
+import { ClickableList } from './ClickableList';
 
 enum FilterType {
   Alphabetical = 'Alphabetical',
