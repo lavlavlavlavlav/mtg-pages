@@ -39,12 +39,21 @@ export async function loadCardsFromBucket(): Promise<{
             const to: Status = oldLog.includes('banned')
               ? Status.Banned
               : Status.Allowed;
-            logs.push({ timestamp: timestamp, to: to, from: Status.New });
+            logs.push({
+              timestamp: timestamp,
+              to: to,
+              from: Status.Allowed,
+              user: 'Lav',
+            });
           }
           const newCategory: CardCategory = {
+            id: cardCategories.length,
             name: card.name,
             status: card.status == 'banned' ? Status.Banned : Status.Allowed,
-            exampleCards: [card.name],
+            exampleCards: [
+              card.name,
+              "Agadeem's Awakening // Agadeem, the Undercrypt",
+            ],
             comments: [
               { poster: 'Lav', timestamp: originDate, message: card.comments },
             ],
@@ -69,15 +78,25 @@ export async function loadCardsFromBucket(): Promise<{
             const to: Status = oldLog.includes('banned')
               ? Status.Banned
               : Status.Allowed;
-            logs.push({ timestamp: timestamp, to: to, from: Status.New });
+            logs.push({
+              timestamp: timestamp,
+              to: to,
+              from: Status.Allowed,
+              user: 'Lav',
+            });
           }
           const newCard: Card = {
             name: card.name,
             status: card.status == 'banned' ? Status.Banned : Status.Allowed,
-            releaseDate: originDate,
-            comments: [
-              { poster: 'Lav', timestamp: originDate, message: card.comments },
-            ],
+            comments: card.comments
+              ? [
+                  {
+                    poster: 'Lav',
+                    timestamp: originDate,
+                    message: card.comments,
+                  },
+                ]
+              : [],
             logs: logs,
             markedForDiscussion: card.discuss,
           };
@@ -91,5 +110,18 @@ export async function loadCardsFromBucket(): Promise<{
   } catch (error) {
     console.error('Error:', error);
     return { cards: [], categories: [] }; // Return an empty array in case of error
+  }
+}
+
+export async function saveCardsToBucket(bucketData: any): Promise<void> {
+  const response = await fetch(BUCKET_URL, {
+    method: 'POST',
+    body: JSON.stringify(bucketData),
+  });
+  if (response.status == 200) {
+    alert('Success');
+  } else {
+    console.log('Error while saving - response:');
+    console.log(JSON.stringify(response));
   }
 }

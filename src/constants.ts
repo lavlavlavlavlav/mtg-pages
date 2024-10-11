@@ -11,7 +11,6 @@ export interface OldCard {
 }
 
 export enum Status {
-  New = 'New',
   Banned = 'Banned',
   Allowed = 'Allowed',
 }
@@ -23,9 +22,9 @@ export enum Role {
 }
 
 export enum Color {
-  BannedRed = '#e65a5a',
-  AllowedGreen = '#8fd177',
-  UndecidedYellow = '#dbd556',
+  BannedRed = '#e65a5a', //[color:#e65a5a] bg-[#e65a5a]
+  AllowedGreen = '#8fd177', //[color:#8fd177] bg-[#8fd177]
+  UndecidedYellow = '#dbd556', //[color:#dbd556] bg-[#dbd556]
 }
 
 export interface Comment {
@@ -38,18 +37,19 @@ export interface Log {
   from: Status;
   to: Status;
   timestamp: Date;
+  user: string;
 }
 
 export interface Card {
   name: string;
   status: Status;
-  releaseDate: Date;
   comments: Comment[];
   logs: Log[];
   markedForDiscussion: boolean;
 }
 
 export interface CardCategory {
+  id: number;
   name: string;
   status: Status;
   exampleCards: string[];

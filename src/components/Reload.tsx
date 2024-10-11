@@ -4,10 +4,8 @@ import { useCallback } from 'react';
 
 function Reload({ setCards }: { setCards: Function }) {
   const reload = useCallback(() => {
-    console.log('Reloading cards ...');
     loadCardsFromBucket().then((c) => {
       setCards(c);
-      console.log('Reloading cards done.');
     });
   }, [loadCardsFromBucket]);
 
