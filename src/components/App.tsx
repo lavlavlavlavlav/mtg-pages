@@ -278,12 +278,12 @@ function App() {
 
   const onToggleDiscuss = useCallback(() => {
     if (!clickedCategory) {
-      if (!currentCard || role != Role.Admin) return;
+      if (!currentCard) return;
       const newCard = { ...currentCard };
       newCard.markedForDiscussion = !currentCard.markedForDiscussion;
       setCurrentCard(newCard);
     } else {
-      if (!currentCategory || role != Role.Admin) return;
+      if (!currentCategory) return;
       const newCategory = { ...currentCategory };
       newCategory.markedForDiscussion = !newCategory.markedForDiscussion;
       setCurrentCategory(newCategory);
@@ -299,7 +299,7 @@ function App() {
       setCurrentCategory(catWithNewCards);
       setCategoryCardIndex(0);
     },
-    [currentCard, currentCategory, role]
+    [currentCard, currentCategory]
   );
 
   const onAddCard = useCallback(
@@ -414,7 +414,7 @@ function App() {
       </Button>
       <AddCard
         cards={cards}
-        disabled={role != Role.Admin}
+        disabled={role != Role.Admin && role != Role.Manager}
         onAdd={onAddCard}
       ></AddCard>
       <CheckCards cards={cards} categories={categories}></CheckCards>
