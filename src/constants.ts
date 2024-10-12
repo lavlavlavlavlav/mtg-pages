@@ -1,5 +1,5 @@
 export const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
-export const CREDENTIALS = JSON.parse(import.meta.env.VITE_CREDENTIALS);
+export const CREDENTIALS = JSON.parse(atob(import.meta.env.VITE_CREDENTIALS));
 
 export interface OldCard {
   comments: string;
