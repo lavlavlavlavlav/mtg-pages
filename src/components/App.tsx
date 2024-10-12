@@ -765,7 +765,7 @@ function App() {
               </div>
               <div className="flex items-end w-full m-5 mt-30">
                 <div className="w-full">
-                  <div className="w-full max-h-[600px] overflow-y-scroll">
+                  <div className="w-full max-h-[450px] overflow-y-scroll">
                     <CommentTable
                       entries={
                         clickedCategory
