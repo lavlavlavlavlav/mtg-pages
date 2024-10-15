@@ -25,6 +25,7 @@ enum FilterType {
   Alphabetical = 'Alphabetical',
   RecentlyChanged = 'RecentlyChanged',
   Status = 'Status',
+  Discuss = 'Discuss',
 }
 
 function App() {
@@ -126,6 +127,13 @@ function App() {
         );
         setCategories(sorted);
         break;
+      case FilterType.Discuss:
+        sorted = [...categories].sort(
+          (a, b) =>
+            Number(b.markedForDiscussion) - Number(a.markedForDiscussion)
+        );
+        setCategories(sorted);
+        break;
       default:
         console.log('Unknown filter type: ' + categoryFilter);
     }
@@ -142,6 +150,13 @@ function App() {
         break;
       case FilterType.Status:
         sorted = [...cards].sort((a, b) => a.status.localeCompare(b.status));
+        setCards(sorted);
+        break;
+      case FilterType.Discuss:
+        sorted = [...cards].sort(
+          (a, b) =>
+            Number(b.markedForDiscussion) - Number(a.markedForDiscussion)
+        );
         setCards(sorted);
         break;
       default:
@@ -428,7 +443,11 @@ function App() {
                   <div className="flex flex-col h-full w-full items-center pt-2">
                     <CustomSelect
                       onChange={(newFilter) => setCategoryFilter(newFilter)}
-                      options={[FilterType.Alphabetical, FilterType.Status]}
+                      options={[
+                        FilterType.Alphabetical,
+                        FilterType.Status,
+                        FilterType.Discuss,
+                      ]}
                       placeholder="Sort by"
                       defaultOption={categoryFilter}
                     ></CustomSelect>
@@ -455,7 +474,11 @@ function App() {
                   <div className="flex flex-col h-full w-full items-center pt-2">
                     <CustomSelect
                       onChange={(newFilter) => setCardFilter(newFilter)}
-                      options={[FilterType.Alphabetical, FilterType.Status]}
+                      options={[
+                        FilterType.Alphabetical,
+                        FilterType.Status,
+                        FilterType.Discuss,
+                      ]}
                       placeholder="Sort by"
                       defaultOption={cardFilter}
                     ></CustomSelect>
