@@ -32,6 +32,7 @@ function AddCard({
     if (!duplicate) {
       onAdd(cardString);
       setDialogOpen(false);
+      setCardString('');
     }
   }, [cardString, cards, onAdd]);
 
