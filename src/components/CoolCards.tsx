@@ -7,7 +7,6 @@ import {
 import { BUCKET_URL, Color, Role } from '@/constants';
 import { useCallback, useEffect, useState } from 'react';
 import Login from './Login';
-// import Reload from './Reload';
 import { ClickableList } from './ClickableList';
 import { CardImage } from './CardImage';
 import { Button } from './ui/button';
