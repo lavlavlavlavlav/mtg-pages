@@ -8,13 +8,14 @@ import {
 } from '@/components/ui/popover';
 import { Card } from '@/constants';
 import { useCallback, useState } from 'react';
+import { CoolCard } from './CoolCards';
 
 function AddCard({
   cards,
   onAdd,
   disabled,
 }: {
-  cards: Card[] | undefined;
+  cards: Card[] | CoolCard[] | undefined;
   onAdd: Function;
   disabled: boolean;
 }) {

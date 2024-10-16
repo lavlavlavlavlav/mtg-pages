@@ -12,7 +12,7 @@ export async function loadCardsFromBucket(): Promise<{
   categories: CardCategory[];
 }> {
   try {
-    const response = await fetch(BUCKET_URL);
+    const response = await fetch(BUCKET_URL + '/data');
     const data = await response.json();
 
     if ('represents' in data['cards'][0]) {
@@ -114,7 +114,7 @@ export async function loadCardsFromBucket(): Promise<{
 }
 
 export async function saveCardsToBucket(bucketData: any): Promise<void> {
-  const response = await fetch(BUCKET_URL, {
+  const response = await fetch(BUCKET_URL + '/data', {
     method: 'POST',
     body: JSON.stringify(bucketData),
   });

@@ -25,6 +25,7 @@ export enum Color {
   BannedRed = '#e65a5a', //[color:#e65a5a] bg-[#e65a5a]
   AllowedGreen = '#8fd177', //[color:#8fd177] bg-[#8fd177]
   UndecidedYellow = '#dbd556', //[color:#dbd556] bg-[#dbd556]
+  White = 'white',
 }
 
 export interface Comment {

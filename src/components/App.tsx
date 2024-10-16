@@ -20,6 +20,7 @@ import { Input } from '@/components/ui/input';
 import EditCards from './EditCards';
 import CheckCards from './CheckCards';
 import AddCard from './AddCard';
+import { useNavigate } from 'react-router-dom';
 
 enum FilterType {
   Alphabetical = 'Alphabetical',
@@ -377,6 +378,8 @@ function App() {
     setCurrentCategory(newCategories[newCategories.length - 1]);
   }, [categories, currentCategory]);
 
+  const navigate = useNavigate();
+
   if (cards.length == 0) return null;
 
   return (
@@ -433,6 +436,13 @@ function App() {
         onAdd={onAddCard}
       ></AddCard>
       <CheckCards cards={cards} categories={categories}></CheckCards>
+      <Button
+        className="absolute top-[360px] right-0 m-4 bg-orange-500 p-2 px-4 rounded-lg border-orange-500 text-white font-bold"
+        onClick={() => navigate('/mtg-pages/coolcards')}
+        disabled={false}
+      >
+        Cool Cards
+      </Button>
       {/* <Reload setCards={setCards}></Reload> */}
       <div className="h-screen w-full overflow-hidden bg-zinc-900 text-white font-bold">
         <ResizablePanelGroup direction="horizontal" className="h-full w-full">
