@@ -117,7 +117,6 @@ function CoolCards() {
   const navigate = useNavigate();
 
   if (!cards) return null;
-  console.log('cards: ' + JSON.stringify(cards));
 
   return (
     <>
@@ -187,6 +186,7 @@ function CoolCards() {
                 ) : null}
               </div>
               <div className="w-full mt-20 flex flex-col">
+                <span className="ml-5">Poster: {currentCard?.poster}</span>
                 <Button
                   className="w-[100px] m-4 bg-orange-500 p-2 px-4 rounded-lg border-orange-500 text-white font-bold"
                   onClick={() => {
