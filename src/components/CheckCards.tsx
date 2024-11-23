@@ -62,13 +62,17 @@ function CheckCards({
           if (
             bannedCard.toLocaleLowerCase().includes(card.toLocaleLowerCase())
           ) {
-            alerts.push(
-              '"' +
-                bannedCard +
-                '" is banned and your deck contains "' +
-                card +
-                '"'
-            );
+            if (bannedCard == card) {
+              alerts.push('"' + card + '" is banned');
+            } else {
+              alerts.push(
+                '"' +
+                  bannedCard +
+                  '" is banned and your deck contains "' +
+                  card +
+                  '"'
+              );
+            }
           }
         });
       });
