@@ -61,7 +61,9 @@ function CheckCards({
       cardsToCheckArray.forEach((card) => {
         bannedCards.forEach((bannedCard) => {
           if (bannedCard.includes(card)) {
-            alerts.push(card + ' is banned');
+            alerts.push(
+              bannedCard + ' is banned and your deck contains ' + card
+            );
           }
         });
       });
