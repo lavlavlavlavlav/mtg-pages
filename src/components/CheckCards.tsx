@@ -36,15 +36,14 @@ function CheckCards({
         if (!isNaN(parseInt(line.charAt(0)))) {
           let nameParts: string[] = line.split(' ');
           nameParts = nameParts.splice(1);
-          return nameParts.join(' ').toLocaleLowerCase();
+          return nameParts.join(' ');
         }
-        return line.toLocaleLowerCase();
+        return line;
       });
 
       let bannedCards: string[] = [];
       cards.forEach((card) => {
-        if (card.status == Status.Banned)
-          bannedCards.push(card.name.toLocaleLowerCase());
+        if (card.status == Status.Banned) bannedCards.push(card.name);
       });
       categories.forEach((cat) => {
         if (cat.status == Status.Banned) {
@@ -60,9 +59,15 @@ function CheckCards({
       const alerts: string[] = [];
       cardsToCheckArray.forEach((card) => {
         bannedCards.forEach((bannedCard) => {
-          if (bannedCard.includes(card)) {
+          if (
+            bannedCard.toLocaleLowerCase().includes(card.toLocaleLowerCase())
+          ) {
             alerts.push(
-              bannedCard + ' is banned and your deck contains ' + card
+              '"' +
+                bannedCard +
+                '" is banned and your deck contains "' +
+                card +
+                '"'
             );
           }
         });
