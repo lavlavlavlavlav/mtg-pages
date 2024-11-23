@@ -1,7 +1,7 @@
 //<img id="magicImage" class="magic-image" src="https://cards.scryfall.io/normal/front/9/9/995486ce-58bb-4753-a812-0ca73ef1a235.jpg?1562880052">
 
 import { useEffect, useState } from 'react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
 const imageCache = new Map<string, string | string[]>();
 

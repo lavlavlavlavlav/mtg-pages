@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Login from './Login';
 import { ClickableList } from './ClickableList';
 import { CardImage } from './CardImage';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import AddCard from './AddCard';
 import { useNavigate } from 'react-router-dom';
 

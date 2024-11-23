@@ -24,6 +24,7 @@ jobs:
         run: npm run build
         env:
           VITE_BUCKET_URL: ${{ secrets.BUCKET_URL }}
+          VITE_BUCKET_KEY: ${{ secrets.BUCKET_KEY }}
           VITE_CREDENTIALS: ${{ vars.CREDENTIALS }}
 
       - name: Upload production-ready build files

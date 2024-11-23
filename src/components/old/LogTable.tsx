@@ -8,7 +8,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Log, Role } from '@/constants';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
 function LogTable({
   entries,

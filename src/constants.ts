@@ -1,4 +1,5 @@
 export const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
+export const BUCKET_KEY = import.meta.env.VITE_BUCKET_KEY;
 export const CREDENTIALS = JSON.parse(atob(import.meta.env.VITE_CREDENTIALS));
 
 export interface OldCard {
@@ -35,13 +36,14 @@ export interface Comment {
 }
 
 export interface Log {
-  from: Status;
-  to: Status;
+  from: Status | '';
+  to: Status | '';
   timestamp: Date;
   user: string;
 }
 
 export interface Card {
+  id: string;
   name: string;
   status: Status;
   comments: Comment[];
@@ -49,8 +51,18 @@ export interface Card {
   markedForDiscussion: boolean;
 }
 
+export interface Category {
+  id: string;
+  name: string;
+  status: Status;
+  exampleCards: string[];
+  comments: Comment[];
+  logs: Log[];
+  markedForDiscussion: boolean;
+}
+
 export interface CardCategory {
-  id: number;
+  id: string;
   name: string;
   status: Status;
   exampleCards: string[];

@@ -8,7 +8,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Comment, Role } from '@/constants';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
 function CommentTable({
   entries,
